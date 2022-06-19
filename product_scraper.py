@@ -13,8 +13,9 @@ headers = {
 product_links = []
 
 for i in range(1): # change range for the number of pages
-    r = requests.get("https://www.thewhiskyexchange.com/c/540/taiwanese-whisky?pg={i}") # change link if neccessary
-    soup = BeautifulSoup(r.content, "lxml")
+    r = requests.get(f"https://www.thewhiskyexchange.com/c/540/taiwanese-whisky?pg={i}") # change link if neccessary
+    # pip install lxml 
+    soup = BeautifulSoup(r.content, "lxml") 
 
     # Individual products on each page
     product_list = soup.find_all("li", class_="product-grid__item")
@@ -95,3 +96,5 @@ for link in product_links:
     }
 
     whisky_list.append(whisky) # Add dictionary of each scraped product to whisky_list
+
+print(whisky_list)
